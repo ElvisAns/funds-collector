@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('APP_ENV') === 'production' ? env('DB_CONNECTION_PROD', 'pgsql') : env('DB_CONNECTION_LOCAL', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -65,12 +65,7 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'url' => env('POSTGRES_URL'),
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
